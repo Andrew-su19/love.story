@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAPPY ANNIVERSARY 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      overflow: hidden;
+      color: #d6336c;
+    }
+
+    h1 {
+      font-size: 2.1em;
+      margin-bottom: 25px;
+    }
+
+    #loveImage {
+      width: 250px;
+      height: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #loveImage:hover {
+      transform: scale(1.05);
+    }
+
+    #openLetterBtn {
+      display: none;
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-family: 'Pacifico', cursive;
+    }
+
+    #openLetterBtn:hover {
+      background-color: #e555a0;
+    }
+
+    .hint {
+      font-size: 1.1em;
+      color: #c94c7c;
+      margin-top: 15px;
+    }
+
+    /* Trái tim bay */
+    .heart-fly {
+      position: fixed;
+      font-size: 20px;
+      color: #ff5ca2;
+      animation: floatUp 1.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
+    }
+
+    /* Pháo hoa */
+    .firework {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff4081 0%, transparent 70%);
+      animation: explode 1s ease-out forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      to {
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+      }
+    }
+
+    button a {
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Ảnh xếp hình trái tim */
+    .heart-photo-container {
+      position: relative;
+      width: 300px;
+      height: 270px;
+      margin: 30px auto;
+      display: none; /* Ẩn ban đầu */
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      animation: floatHeart 6s ease-in-out infinite;
+    }
+
+    .heart-photo-container img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+      position: absolute;
+      transition: transform 0.3s;
+    }
+
+    .heart-photo-container img:hover {
+      transform: scale(1.1);
+    }
+
+    .heart-photo-container img:nth-child(1) { top: 0; left: 60px; }
+    .heart-photo-container img:nth-child(2) { top: 0; left: 140px; }
+    .heart-photo-container img:nth-child(3) { top: 50px; left: 30px; }
+    .heart-photo-container img:nth-child(4) { top: 50px; left: 170px; }
+    .heart-photo-container img:nth-child(5) { top: 110px; left: 0; }
+    .heart-photo-container img:nth-child(6) { top: 110px; left: 200px; }
+    .heart-photo-container img:nth-child(7) { top: 170px; left: 40px; }
+    .heart-photo-container img:nth-child(8) { top: 170px; left: 160px; }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+  /* Rơi trái tim */
+  @keyframes fall {
+    to {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    #openLetterBtn {
+      font-size: 1em;
+      padding: 10px 20px;
+    }
+
+    .heart-photo-container {
+      transform: scale(0.85);
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <h1>💘 Một điều anh muốn gửi đến em... 💘</h1>
+
+  <!-- Hình ảnh chuyển đổi -->
+  <img id="loveImage" src="ab_dd.JPEG" alt="Ảnh tình yêu" />
+  <p class="hint">📸 Click vào ảnh để xem từng khoảnh khắc 💞</p>
+
+  <!-- Nút mở thư (ẩn ban đầu) -->
+  <button id="openLetterBtn" onclick="openLetter()"><a href="index(2).html">MỞ THƯ 💌</a></button>
+
+  <!-- Ảnh hình trái tim -->
+  <div id="heartGallery" class="heart-photo-container">
+    <img src="bx(1).JPEG" alt="1">
+    <img src="bx(2).JPEG" alt="2">
+    <img src="bx(3).JPEG" alt="3">
+    <img src="bx(4).JPEG" alt="4">
+    <img src="bx(5).JPEG" alt="5">
+    <img src="bx(6).JPEG" alt="6">
+    <img src="bx.JPEG" alt="7">
+    <img src="dd_ab.JPEG" alt="8">
+  </div>
+
+  <script>
+    const img = document.getElementById("loveImage");
+    const btn = document.getElementById("openLetterBtn");
+    const heartGallery = document.getElementById("heartGallery");
+
+    const images = [
+      "ab_dd.JPEG",
+      "bx(1).JPEG",
+      "bx(2).JPEG",
+      "bx(3).JPEG",
+      "bx(4).JPEG",
+      "bx(5).JPEG",
+      "bx(6).JPEG",
+      "bx.JPEG",
+      "dd_ab.JPEG"
+    ];
+
+    let index = 0;
+
+    img.addEventListener("click", () => {
+      img.style.opacity = 0;
+
+      setTimeout(() => {
+        index++;
+        if (index >= images.length) {
+          index = images.length - 1;
+
+          // Hiện nút + ảnh trái tim + hiệu ứng mưa trái tim
+          btn.style.display = "inline-block";
+          heartGallery.style.display = "flex";
+
+          rainHearts();
+          setTimeout(() => rainHearts(), 1000);
+          setTimeout(() => rainHearts(), 2000);
+          return;
+        }
+
+        img.src = images[index];
+        img.style.opacity = 1;
+      }, 300);
+    });
+
+    function openLetter() {
+      // Trái tim bay
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart-fly";
+        heart.textContent = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = (window.innerHeight - 50) + "px";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+      }
+
+      // Pháo hoa
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const fw = document.createElement("div");
+          fw.className = "firework";
+          fw.style.left = Math.random() * 100 + "vw";
+          fw.style.top = Math.random() * 80 + "vh";
+          document.body.appendChild(fw);
+          setTimeout(() => fw.remove(), 1000);
+        }, i * 200);
+      }
+    }
+
+    function rainHearts(count = 20) {
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.textContent = "💗";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-30px";
+        heart.style.fontSize = (12 + Math.random() * 20) + "px";
+        heart.style.animation = `fall ${2 + Math.random() * 3}s linear forwards`;
+        heart.style.pointerEvents = "none";
+        heart.style.zIndex = 999;
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>

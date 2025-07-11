@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THƯ GỬI VỢ IU 💖</title>
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ffe0e9, #ffd3ec);
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    text-align: center;
+    color: #d63384;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .heart {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 40px;
+  }
+
+  .letter p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+  }
+
+  /* .letter img {
+    display: block;
+    max-width: 50%;
+    height: 300px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  } */
+
+  .icons {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+  }
+
+  .icons span {
+    margin: 0 10px;
+  }
+
+  /* Trái tim rơi */
+  .heart-fall {
+    position: fixed;
+    top: -50px;
+    font-size: 24px;
+    animation: fall 5s linear infinite;
+    z-index: 1;
+    opacity: 0.7;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Header lấp lánh */
+  .twinkle-header {
+    text-align: center;
+    font-size: 24px;
+    animation: twinkle 1s infinite alternate;
+    color: #ff69b4;
+    padding-top: 20px;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 1; }
+    to { opacity: 0.4; }
+  }
+
+  /* Icon trái tim nhấp nháy */
+  .heart-blink span:nth-child(3) {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .bai-hat audio {
+      width: 100%;
+  }
+
+ @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    .letter p {
+      font-size: 16px;
+    }
+
+    .icons {
+      font-size: 20px;
+    }
+
+    .heart {
+      font-size: 30px;
+      top: -10px;
+      right: -10px;
+    }
+
+    .twinkle-header {
+      font-size: 20px;
+    }
+  }
+
+  </style>
+</head>
+<body>
+  <div class="twinkle-header">✨💖✨💖✨</div>
+
+  <div class="container">
+    <div class="heart">💌</div>
+    <h1>💖 HAPPY ANNIVERSARY 💖</h1>
+    <div class="letter">
+      <p>Vợ yêu à,</p>
+      <p>Từ ngày em bước vào cuộc đời anh, mọi thứ như bừng sáng. Ánh mắt em, nụ cười em, tất cả đều làm anh rung động. 🌸</p>
+      <p>Mỗi ngày trôi qua, anh chỉ muốn dành nhiều thời gian hơn bên em. Cùng nhau đi ăn, dạo phố, và nghe em kể những chuyện vu vơ... 🐻</p>
+      <p>Chỉ cần có em bên cạnh, dù mai này có ra sao, anh vẫn thấy đủ đầy. Cảm ơn em đã đến. Cảm ơn em đã là một phần không thể thiếu của cuộc đời anh. 💗</p>
+      <p>Mãi thương em,<br>Yêu em. 💖</p>
+      <p>Em thử đoán xem đây là gì?</p>
+    </div>
+    <div class="bai-hat">
+        <audio controls src="LeDuong_KaiDinh.mp3" type="audio/mp3"></audio>
+    </div>    
+
+    <div class="icons heart-blink">
+      <span>🐰</span>
+      <span>🐻</span>
+      <span>💖</span>
+      <span>🌈</span>
+      <span>🎵</span>
+    </div>
+  </div>
+
+  <script>
+  // Hiệu ứng trái tim rơi
+  const hearts = ['💖', '💘', '💕', '❤️', '💞'];
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart-fall';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 300);
+
+  </script>
+</body>
+</html>

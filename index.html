@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuyện tình của chúng mình</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 90%;
+      height: 500px;
+      max-width: 400px;
+      margin: 50px auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+     }
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #4a148c;
+    }
+
+    .open-btn {
+      margin-top: 20px;
+      display: none;
+    }
+
+    /* Trái tim rơi */
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 20px;
+      color: #e91e63;
+      animation: fall linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Pháo hoa */
+    .firework {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff4081 0%, transparent 70%);
+      animation: explode 1s ease-out forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .container {
+        margin: 20px auto;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .result {
+        font-size: 15px;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>HAPPY ANNIVERSARY 💖</h1>
+    <form id="loveForm">
+      <input type="text" id="names" placeholder="Tên của bạn là gì?" required />
+      <label>Ngày bắt đầu yêu nhau:</label>
+      <input type="date" id="startDate" required />
+      <label>Hôm nay là ngày:</label>
+      <input type="date" id="todayDate" value="" />
+      <button type="submit">Tính số ngày yêu nhau</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <a href="index(1).html" id="openButton" class="open-btn">
+      <button>Đoán xem đây là cái gì? 💌</button>
+    </a>
+  </div>
+
+  <script>
+    document.getElementById("todayDate").valueAsDate = new Date();
+
+    const form = document.getElementById("loveForm");
+    const result = document.getElementById("result");
+    const openButton = document.getElementById("openButton");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const names = document.getElementById("names").value;
+      const startDate = new Date(document.getElementById("startDate").value);
+      const todayDate = new Date(document.getElementById("todayDate").value);
+
+      if (startDate > todayDate) {
+        result.innerHTML = "Ngày bắt đầu yêu không thể sau hôm nay 😢";
+        return;
+      }
+
+      const diffTime = Math.abs(todayDate - startDate);
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+      result.innerHTML = `
+        <p>${names} à, chúng mình đã bên nhau được:</p>
+        <h2>${diffDays} ngày 💗</h2>
+      `;
+
+      openButton.style.display = "block";
+
+      triggerFirework(event.clientX, event.clientY);
+    });
+
+    function triggerFirework(x, y) {
+      for (let i = 0; i < 15; i++) {
+        const fw = document.createElement("div");
+        fw.className = "firework";
+        fw.style.left = `${x + (Math.random() - 0.5) * 100}px`;
+        fw.style.top = `${y + (Math.random() - 0.5) * 100}px`;
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 1000);
+      }
+    }
+
+    function createFallingHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createFallingHeart, 300);
+  </script>
+
+</body>
+</html>
